@@ -1,0 +1,14 @@
+<html>
+<body>
+<head>
+	<form action="{% url 'Login:Signin'%}" method="post">
+		{% csrf_token %}
+		<input name="Username" id="Username" type="text" placeholder="Username">
+		<input name="Password" id="Password" type="password" placeholder="Password">
+		<input type="submit" name="SignIn">
+	</form>
+	<br><br>
+	<a href="/Login/Signup">SignUp</a>
+</head>
+</body>
+</html>
