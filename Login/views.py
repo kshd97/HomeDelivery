@@ -3,11 +3,11 @@ from django.contrib.auth.models import User,UserManager
 from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import render,redirect
 from .models import Customer
-import googlemaps
+#import googlemaps
 from django.contrib.gis.measure import Distance, D
 from datetime import datetime
 #from geographiclib.geodesic import Geodesic
-from geopy.geocoders import Nominatim
+#from geopy.geocoders import Nominatim
 from math import *
 import json
 import sys

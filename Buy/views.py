@@ -30,6 +30,6 @@ def Item(request, cat, item):
 def Search(request):
 	if request.method == 'GET': 
 		sq = request.GET.get('search_box', None)
-		lists = ItemList.objects.filter(p_name=sq)
+		lists = ItemList.objects.filter(p_name__icontains=sq)
 		return render(request,'Buy/List.html', {'lists':lists})
 		
