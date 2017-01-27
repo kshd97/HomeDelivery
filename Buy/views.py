@@ -26,4 +26,10 @@ def Item(request, cat, item):
 	for i in ids:
 		details = Price.objects.filter(p_id=i.p_id)
 	return render(request, 'Buy/Details.html', {'details':details})
+
+def Search(request):
+	if request.method == 'GET': 
+		sq = request.GET.get('search_box', None)
+		lists = ItemList.objects.filter(p_name=sq)
+		return render(request,'Buy/List.html', {'lists':lists})
 		
