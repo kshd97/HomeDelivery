@@ -64,8 +64,9 @@ def Signup(request):
 			user.is_active = True
 			user.save()
 
-			#gmaps = googlemaps.Client(key='AIzaSyDeqb53ojQt7qbvDr2SVFSIG9RaRBqj7Q0')
-			#geocode_result = gmaps.geocode(address)
+			gmaps = googlemaps.Client(key='AIzaSyDeqb53ojQt7qbvDr2SVFSIG9RaRBqj7Q0')
+			# geocode_result = gmaps.geocode(address)
+			# print(geocode_result)
 			#geolocator = Nominatim()
 			#print("HELKHGK")
 			#location = geolocator.geocode(address, timeout=None)

@@ -7,5 +7,19 @@
 {% for d in details %}
 	{{d.store_id}} {{d.Price}}
 {% endfor %}
+
+<form method="POST" action="{% url 'Buy:AddToCart' %}">
+	<input type="number" name="quantity" min="1" max="20">
+	<select name="Preference">
+		<option value="NONE">NONE</option>
+	{% for d in details %}
+		<option value="{{d.store_id}}">{{d.store_id}}</option>
+	{% endfor %}
+	</select>
+	<input type="hidden" name="p_id" value="{{ request.session.P_id }}">	
+<br>
+	<input type="submit">
+</form>
+
 </body>
 </html>
