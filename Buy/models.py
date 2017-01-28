@@ -17,6 +17,13 @@ class Price(models.Model):
 	Price = models.DecimalField(max_digits=4,decimal_places=2)
 
 
+class Cart(models.Model):
+	c_id = models.ForeignKey(Customer)
+	p_id = models.IntegerField()
+	quantity = models.IntegerField()
+	preference = models.CharField(max_length=20)
+
+
 class Transaction(models.Model):
 	c_id = models.ForeignKey(Customer)
 	price_id = models.ForeignKey(Price)
