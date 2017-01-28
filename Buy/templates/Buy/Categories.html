@@ -13,5 +13,12 @@
 {% for c in categories %}
 	<a href="Category/{{c.category}}">{{c.category}}</a>
 {% endfor %}
+
+<h2> Top picks </h2>
+<br>
+{% for t in top %}
+	<a href="Category/{{t.category}}/Item/{{t.p_name}}">{{t.p_name}}</a>
+{% endfor %}
+
 </body>
 </html>

@@ -14,8 +14,9 @@ def index(request):
 	return HttpResponse("Hello")
 
 def Category_Shop(request):
+	top = ItemList.objects.filter(rating__gte=3)
 	categories = ItemList.objects.order_by().values('category').distinct()
-	return render(request, 'Buy/Categories.html', {'categories':categories})
+	return render(request, 'Buy/Categories.html', {'categories':categories, 'top':top})
 
 def Category(request,cat):
 	lists = ItemList.objects.filter(category=cat)
@@ -31,19 +32,24 @@ def Item(request, cat, item):
 
 	return render(request, 'Buy/Details.html', {'details':details})
 
-<<<<<<< HEAD
 def Search(request):
 	if request.method == 'GET': 
 		sq = request.GET.get('search_box', None)
 		lists = ItemList.objects.filter(p_name__icontains=sq)
 		return render(request,'Buy/List.html', {'lists':lists})
-=======
+
 @csrf_exempt
 def AddToCart(request):
 	if request.method=='POST':
 	 	quantity = request.POST['quantity']
 	 	preference = request.POST['Preference']
+	 	rating = request.POST['Rating']
 	 	p_id = request.POST['p_id']
+	 	q = ItemList.objects.filter(p_id=p_id)
+	 	if rating is not None:
+	 		q.rating = (((q.rating*q.number)+rating)/(q.number+1))
+	 		q.number = (q.number+1)
+	 		q.save()
 	 	u = request.user
 	 	k = Customer.objects.filter(user=u)
 	 	#n = Store.objects.filter(user=preference)
@@ -52,9 +58,9 @@ def AddToCart(request):
 	 		#for j in n:
 	 		A = Cart(c_id=i, p_id=p_id, quantity=quantity, preference=preference)
 	 		A.save()
-
+	 	return render(request,'Buy/Categories.html')
 
 
 	return HttpResponse("BLAH")
->>>>>>> e3d98d0170d020059243cf0e2cebe8d5788a0f0f
+
 		

@@ -7,6 +7,8 @@ class ItemList(models.Model):
 	p_id = models.AutoField(primary_key =  True)
 	p_name = models.CharField(max_length=30)
 	category = models.CharField(max_length=20)
+	rating = models.IntegerField(default=0)
+	number = models.IntegerField(default=0)
 
 	def __str__(self):
 		return self.p_name
